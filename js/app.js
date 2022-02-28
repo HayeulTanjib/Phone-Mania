@@ -12,7 +12,7 @@ const loadPhoneData = async() => {
         displayPhone(getData.data);  
 }
 
-
+loadPhoneData()
 
 const displayPhone = (phones) => {
     const phoneContainer = document.getElementById('phone_container');
@@ -21,18 +21,21 @@ const displayPhone = (phones) => {
         //clear previous search
         phoneContainer.textContent = '';
         singlePhoneContainer.textContent = '';
+    
+    //Show only 20 items
+    const phoneSliced = phones.slice(0, 20);
 
-     phones.forEach(phone => {
+    phoneSliced.forEach(phone => {
     const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = 
     `
-    <div class="card h-100 text-center">
+    <div class="card h-100 text-center shadow-sm">
     <img src="${phone.image}" class="card-img-top mx-auto w-50 pt-3" alt="...">
     <div class="card-body">
       <h5 class="card-title">${phone.phone_name}</h5>
       <p class="card-text">${phone.brand}</p>
-      <button onclick="loadSinglePhoneData('${phone.slug}')" class="btn btn-primary">See Details</button>
+      <button onclick="loadSinglePhoneData('${phone.slug}')" class="btn btn-outline-warning">See Details</button>
     </div>
   </div>
     `;
@@ -40,6 +43,8 @@ const displayPhone = (phones) => {
     phoneContainer.appendChild(div);
 
  });
+
+//  console.log(phones.slice(0, 20));
 
 }
 
@@ -57,13 +62,12 @@ const displaySinglePhone = (phones) => {
     const singlePhoneContainer = document.getElementById('singlePhone_container');
     singlePhoneContainer.textContent = '';
 
-    console.log(phones.mainFeatures.sensors);
 
         const div = document.createElement('div');
          div.classList.add('card');
          div.style.width = '24rem';
          div.style.textAlign = 'center';
-         div.style.margin = '0 auto';
+         div.style.margin = '0 auto';          
             
         div.innerHTML = 
             `

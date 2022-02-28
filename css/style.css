@@ -1,0 +1,11 @@
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+    }
+    .btn{
+    box-shadow: none !important
+    }
+    
+.card{
+    border-bottom: 3px solid yellowgreen;
+}
