@@ -11,13 +11,16 @@ const loadPhoneData = async() => {
         const getData = await res.json();
         displayPhone(getData.data);  
 }
+loadPhoneData()
 
 
 const displayPhone = (phones) => {
     const phoneContainer = document.getElementById('phone_container');
+    const singlePhoneContainer = document.getElementById('singlePhone_container');
 
         //clear previous search
         phoneContainer.textContent = '';
+        singlePhoneContainer.textContent = '';
 
      phones.forEach(phone => {
     const div = document.createElement('div');
@@ -52,10 +55,13 @@ const displaySinglePhone = (phones) => {
     const singlePhoneContainer = document.getElementById('singlePhone_container');
     singlePhoneContainer.textContent = '';
 
+    console.log(phones.mainFeatures.sensors);
+
         const div = document.createElement('div');
          div.classList.add('card');
          div.style.width = '24rem';
          div.style.textAlign = 'center';
+         div.style.margin = '0 auto';
             
         div.innerHTML = 
             `
@@ -64,12 +70,21 @@ const displaySinglePhone = (phones) => {
               <h5 class="card-title">${phones.name}</h5>
               <p class="card-text">${phones.brand}</p>
               <p class="card-text">${phones.releaseDate}</p>
+              
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">An item</li>
-              <li class="list-group-item">A second item</li>
-              <li class="list-group-item">A third item</li>
+              <li class="list-group-item fw-bold">Main Features</li>
+              <li class="list-group-item">${phones.mainFeatures.storage}</li>
+              <li class="list-group-item">${phones.mainFeatures.displaySize}</li>
+              <li class="list-group-item">${phones.mainFeatures.chipSet}</li>
+              <li class="list-group-item">${phones.mainFeatures.memory}</li>
             </ul>
+
+            <p class="fw-bold">Sensor Information</p>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item">${phones.mainFeatures.sensors}</li>
+          </ul>
+
             `;
 
             singlePhoneContainer.appendChild(div);
