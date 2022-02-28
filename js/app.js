@@ -11,7 +11,7 @@ const loadPhoneData = async() => {
         const getData = await res.json();
         displayPhone(getData.data);  
 }
-loadPhoneData()
+
 
 
 const displayPhone = (phones) => {
@@ -38,7 +38,9 @@ const displayPhone = (phones) => {
     `;
 
     phoneContainer.appendChild(div);
+
  });
+
 }
 
 
@@ -69,7 +71,7 @@ const displaySinglePhone = (phones) => {
             <div class="card-body">
               <h5 class="card-title">${phones.name}</h5>
               <p class="card-text">${phones.brand}</p>
-              <p class="card-text">${phones.releaseDate}</p>
+              <p class="card-text">${phones.releaseDate? phones.releaseDate: 'Info Not Available'}</p>
               
             </div>
             <ul class="list-group list-group-flush">
@@ -78,12 +80,18 @@ const displaySinglePhone = (phones) => {
               <li class="list-group-item">${phones.mainFeatures.displaySize}</li>
               <li class="list-group-item">${phones.mainFeatures.chipSet}</li>
               <li class="list-group-item">${phones.mainFeatures.memory}</li>
-            </ul>
-
-            <p class="fw-bold">Sensor Information</p>
-            <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item fw-bold">Sensor Information</li>
             <li class="list-group-item">${phones.mainFeatures.sensors}</li>
-          </ul>
+          
+          <li class="list-group-item fw-bold">Other Information</li>
+          <li class="list-group-item">${phones?.others?.WLAN? phones.others.WLAN: 'Info Not Available'}</li>
+          <li class="list-group-item">${phones?.others?.Bluetooth? phones.others.Bluetooth: 'Info Not Available'}</li>
+          <li class="list-group-item">${phones?.others?.GPS? phones.others.GPS: 'Info Not Available'}</li>
+          <li class="list-group-item">${phones?.others?.NFC? phones.others.NFC: 'Info Not Available'}</li>
+          <li class="list-group-item">${phones?.others?.Radio? phones.others.Radio: 'Info Not Available'}</li>
+          <li class="list-group-item">${phones?.others?.USB? phones.others.USB: 'Info Not Available'}</li>
+        </ul>
 
             `;
 
