@@ -1,20 +1,39 @@
 const loadPhoneData = async() => {
     const getSearchInput = document.getElementById('search_input'); 
         const searchText = getSearchInput.value;
-            //console.log(searchText);
-
+            
         //clear input
         getSearchInput.value = '';
+
+        //error handling
+        if(!searchText){
+            getSearchInput.placeholder = "Please type your Phone name first!"
+            
+        }
+        else{
 
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
         const res = await fetch(url);
         const getData = await res.json();
         displayPhone(getData.data);  
+
+    }
 }
 
-loadPhoneData()
+
 
 const displayPhone = (phones) => {
+
+ /*   const getSearchInput1 = document.getElementById('search_input'); 
+    console.log(getSearchInput1.value);
+
+    if(!phones.phone_name){
+
+        const errorMsg = document.getElementById('err_msg');
+            errorMsg.innerText = `None Matched Your Search Iteam ${getSearchInput1.value}`; 
+    } */
+
+
     const phoneContainer = document.getElementById('phone_container');
     const singlePhoneContainer = document.getElementById('singlePhone_container');
 
@@ -24,6 +43,8 @@ const displayPhone = (phones) => {
     
     //Show only 20 items
     const phoneSliced = phones.slice(0, 20);
+
+    
 
     phoneSliced.forEach(phone => {
     const div = document.createElement('div');
