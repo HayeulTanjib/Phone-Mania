@@ -23,8 +23,6 @@ const loadPhoneData = async() => {
 }
 
 
-
-
 //============================================ Display All Searched Phones =====================================================
 
 const displayPhone = (phones) => {

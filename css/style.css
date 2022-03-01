@@ -4,6 +4,11 @@ background: -webkit-linear-gradient(to right, #fbc7d4, #9796f0);  /* Chrome 10-2
 background: linear-gradient(to right, #fbc7d4, #9796f0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 font-family: sans-serif;
 }
+h1{
+    letter-spacing: 7px;
+    font-size: 44px;
+
+}
 
 .btn:focus {
     outline: none;
